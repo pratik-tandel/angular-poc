@@ -1,0 +1,38 @@
+<div class="example-container">
+    <h2>Items</h2>
+  
+    <div
+        cdkDropList
+        #itemList="cdkDropList"
+        [cdkDropListData]="items"
+        [cdkDropListConnectedTo]="[answerList]"
+        [cdkDropListDisabled]="limitReached"
+        class="example-list"
+        (cdkDropListDropped)="drop($event)"
+    >
+        <div class="example-box" *ngFor="let item of items" cdkDrag>
+            {{item}}
+        </div>
+    </div>
+</div>
+  
+<div class="example-container">
+    <h2>Answers</h2>
+
+    <div
+        cdkDropList
+        #answerList="cdkDropList"
+        [cdkDropListData]="answers"
+        [cdkDropListConnectedTo]="[itemList]"
+        class="example-list"
+        (cdkDropListDropped)="drop($event)"
+    >
+        <div class="container-boundary">
+            <div class="example-box" *ngFor="let item of answers; let i = index" cdkDrag>
+                <span>{{i + 1}}</span> {{item}}
+            </div>
+        </div>
+    </div>
+</div>
+  
+  
